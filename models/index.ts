@@ -461,6 +461,8 @@ export * from './showcases-showcase-videos-create-showcase-thumbnail-request1';
 export * from './showcases-showcase-videos-replace-showcase-videos-request';
 export * from './showcases-showcase-videos-replace-videos-request';
 export * from './skill';
+export * from './subscription';
+export * from './subscription-items-inner';
 export * from './subscription-plans';
 export * from './subscription-plans-currency';
 export * from './subscription-plans-discount';

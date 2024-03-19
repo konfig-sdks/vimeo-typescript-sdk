@@ -3870,6 +3870,13 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/users/{user_id}/{subscription_id}-GET': {
+        parameters: [
+            {
+                name: 'subscription_id'
+            },
+        ]
+    },
     '/me/payment_methods-GET': {
         parameters: [
             {
@@ -5915,9 +5922,6 @@ export const operationParameterMap: Record<string, Entry> = {
     '/videos-GET': {
         parameters: [
             {
-                name: 'query'
-            },
-            {
                 name: 'direction'
             },
             {
@@ -5931,6 +5935,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'per_page'
+            },
+            {
+                name: 'query'
             },
             {
                 name: 'sort'

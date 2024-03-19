@@ -201,7 +201,7 @@ export const ShowcasesCustomShowcaseThumbnailsApiAxiosParamCreator = function (c
             };
         },
         /**
-         * This method returns every custom thumbnail of the specified showcase. The authenticated user must be the owner of the showcase.
+         * This method returns every custom thumbnail of the specified showcase.
          * @summary Get all the custom thumbnails of a showcase
          * @param {number} albumId The ID of the showcase.
          * @param {number} userId The ID of the user.
@@ -368,7 +368,7 @@ export const ShowcasesCustomShowcaseThumbnailsApiFp = function(configuration?: C
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * This method returns every custom thumbnail of the specified showcase. The authenticated user must be the owner of the showcase.
+         * This method returns every custom thumbnail of the specified showcase.
          * @summary Get all the custom thumbnails of a showcase
          * @param {ShowcasesCustomShowcaseThumbnailsApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -433,7 +433,7 @@ export const ShowcasesCustomShowcaseThumbnailsApiFactory = function (configurati
             return localVarFp.getSpecificThumbnail(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * This method returns every custom thumbnail of the specified showcase. The authenticated user must be the owner of the showcase.
+         * This method returns every custom thumbnail of the specified showcase.
          * @summary Get all the custom thumbnails of a showcase
          * @param {ShowcasesCustomShowcaseThumbnailsApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -649,7 +649,7 @@ export class ShowcasesCustomShowcaseThumbnailsApiGenerated extends BaseAPI {
     }
 
     /**
-     * This method returns every custom thumbnail of the specified showcase. The authenticated user must be the owner of the showcase.
+     * This method returns every custom thumbnail of the specified showcase.
      * @summary Get all the custom thumbnails of a showcase
      * @param {ShowcasesCustomShowcaseThumbnailsApiListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

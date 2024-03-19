@@ -38,6 +38,12 @@ export interface Analytics {
      */
     'country': AnalyticsCountry;
     /**
+     * The type of device.
+     * @type {string}
+     * @memberof Analytics
+     */
+    'device_type': string;
+    /**
      * The number of downloads of the corresponding Vimeo content.
      * @type {number}
      * @memberof Analytics

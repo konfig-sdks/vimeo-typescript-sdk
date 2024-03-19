@@ -83,6 +83,54 @@ export const PaymentsEssentialsApiAxiosParamCreator = function (configuration?: 
             };
         },
         /**
+         * This method returns information about the specified Vimeo payments service subscription.
+         * @summary Get information about a payments service subscription
+         * @param {string} subscriptionId The ID of the subscription.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSubscriptionInfo: async (subscriptionId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'subscriptionId' is not null or undefined
+            assertParamExists('getSubscriptionInfo', 'subscriptionId', subscriptionId)
+            const localVarPath = `/users/{user_id}/{subscription_id}`
+                .replace(`{${"subscription_id"}}`, encodeURIComponent(String(subscriptionId !== undefined ? subscriptionId : `-subscription_id-`)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["public"], configuration)
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["public"], configuration)
+
+    
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/users/{user_id}/{subscription_id}',
+                httpMethod: 'GET'
+            });
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * This method returns a list of all Vimeo payments service payment methods that are available to the authenticated user.
          * @summary Get a list of all payments service payment methods
          * @param {number} userId The ID of the user.
@@ -181,6 +229,17 @@ export const PaymentsEssentialsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * This method returns information about the specified Vimeo payments service subscription.
+         * @summary Get information about a payments service subscription
+         * @param {PaymentsEssentialsApiGetSubscriptionInfoRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSubscriptionInfo(requestParameters: PaymentsEssentialsApiGetSubscriptionInfoRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSubscriptionInfo(requestParameters.subscriptionId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * This method returns a list of all Vimeo payments service payment methods that are available to the authenticated user.
          * @summary Get a list of all payments service payment methods
          * @param {PaymentsEssentialsApiListPaymentMethodsRequest} requestParameters Request parameters.
@@ -215,6 +274,16 @@ export const PaymentsEssentialsApiFactory = function (configuration?: Configurat
             return localVarFp.getPaymentMethodInfo(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
+         * This method returns information about the specified Vimeo payments service subscription.
+         * @summary Get information about a payments service subscription
+         * @param {PaymentsEssentialsApiGetSubscriptionInfoRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSubscriptionInfo(requestParameters: PaymentsEssentialsApiGetSubscriptionInfoRequest, options?: AxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.getSubscriptionInfo(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
          * This method returns a list of all Vimeo payments service payment methods that are available to the authenticated user.
          * @summary Get a list of all payments service payment methods
          * @param {PaymentsEssentialsApiListPaymentMethodsRequest} requestParameters Request parameters.
@@ -240,6 +309,22 @@ export type PaymentsEssentialsApiGetPaymentMethodInfoRequest = {
     * @memberof PaymentsEssentialsApiGetPaymentMethodInfo
     */
     readonly paymentMethodId: string
+    
+}
+
+/**
+ * Request parameters for getSubscriptionInfo operation in PaymentsEssentialsApi.
+ * @export
+ * @interface PaymentsEssentialsApiGetSubscriptionInfoRequest
+ */
+export type PaymentsEssentialsApiGetSubscriptionInfoRequest = {
+    
+    /**
+    * The ID of the subscription.
+    * @type {string}
+    * @memberof PaymentsEssentialsApiGetSubscriptionInfo
+    */
+    readonly subscriptionId: string
     
 }
 
@@ -304,6 +389,18 @@ export class PaymentsEssentialsApiGenerated extends BaseAPI {
      */
     public getPaymentMethodInfo(requestParameters: PaymentsEssentialsApiGetPaymentMethodInfoRequest, options?: AxiosRequestConfig) {
         return PaymentsEssentialsApiFp(this.configuration).getPaymentMethodInfo(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * This method returns information about the specified Vimeo payments service subscription.
+     * @summary Get information about a payments service subscription
+     * @param {PaymentsEssentialsApiGetSubscriptionInfoRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaymentsEssentialsApiGenerated
+     */
+    public getSubscriptionInfo(requestParameters: PaymentsEssentialsApiGetSubscriptionInfoRequest, options?: AxiosRequestConfig) {
+        return PaymentsEssentialsApiFp(this.configuration).getSubscriptionInfo(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

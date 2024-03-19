@@ -551,7 +551,7 @@ export const ShowcasesShowcaseVideosApiAxiosParamCreator = function (configurati
             };
         },
         /**
-         * This endpoint returns every video belonging to the authenticated user that can be added to or removed from the specified showcase. The user must be the owner of the showcase.
+         * This method returns every video belonging to the authenticated user that can be added to or removed from the specified showcase.
          * @summary Get all the user\'s videos that can be added to or removed from a showcase
          * @param {number} albumId The ID of the showcase.
          * @param {'asc' | 'desc'} [direction] The sort direction of the results.  Option descriptions:  * &#x60;asc&#x60; - Sort the results in ascending order.  * &#x60;desc&#x60; - Sort the results in descending order. 
@@ -1153,7 +1153,7 @@ export const ShowcasesShowcaseVideosApiFp = function(configuration?: Configurati
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * This endpoint returns every video belonging to the authenticated user that can be added to or removed from the specified showcase. The user must be the owner of the showcase.
+         * This method returns every video belonging to the authenticated user that can be added to or removed from the specified showcase.
          * @summary Get all the user\'s videos that can be added to or removed from a showcase
          * @param {ShowcasesShowcaseVideosApiListInShowcaseRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1337,7 +1337,7 @@ export const ShowcasesShowcaseVideosApiFactory = function (configuration?: Confi
             return localVarFp.listAvailableShowcases(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * This endpoint returns every video belonging to the authenticated user that can be added to or removed from the specified showcase. The user must be the owner of the showcase.
+         * This method returns every video belonging to the authenticated user that can be added to or removed from the specified showcase.
          * @summary Get all the user\'s videos that can be added to or removed from a showcase
          * @param {ShowcasesShowcaseVideosApiListInShowcaseRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -2094,7 +2094,7 @@ export class ShowcasesShowcaseVideosApiGenerated extends BaseAPI {
     }
 
     /**
-     * This endpoint returns every video belonging to the authenticated user that can be added to or removed from the specified showcase. The user must be the owner of the showcase.
+     * This method returns every video belonging to the authenticated user that can be added to or removed from the specified showcase.
      * @summary Get all the user\'s videos that can be added to or removed from a showcase
      * @param {ShowcasesShowcaseVideosApiListInShowcaseRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

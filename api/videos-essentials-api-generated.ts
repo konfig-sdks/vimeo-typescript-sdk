@@ -809,20 +809,18 @@ export const VideosEssentialsApiAxiosParamCreator = function (configuration?: Co
         /**
          * This method returns all the videos that match custom search criteria.
          * @summary Search for videos
-         * @param {string} query The search query.
          * @param {'asc' | 'desc'} [direction] The sort direction of the results.  Option descriptions:  * &#x60;asc&#x60; - Sort the results in ascending order.  * &#x60;desc&#x60; - Sort the results in descending order. 
          * @param {'CC' | 'CC-BY' | 'CC-BY-NC' | 'CC-BY-NC-ND' | 'CC-BY-NC-SA' | 'CC-BY-ND' | 'CC-BY-SA' | 'CC0' | 'categories' | 'duration' | 'in-progress' | 'minimum_likes' | 'trending' | 'upload_date'} [filter] The attribute by which to filter the results. &#x60;CC&#x60; and related filters target videos with the corresponding Creative Commons licenses. For more information, see our [Creative Commons](https://vimeo.com/creativecommons) page.  Option descriptions:  * &#x60;CC&#x60; - Return videos under any Creative Commons license.  * &#x60;CC-BY&#x60; - Return CC BY, or attribution-only, videos.  * &#x60;CC-BY-NC&#x60; - Return CC BY-NC, or Attribution-NonCommercial, videos.  * &#x60;CC-BY-NC-ND&#x60; - Return CC BY-NC-ND, or Attribution-NonCommercial-NoDerivs, videos.  * &#x60;CC-BY-NC-SA&#x60; - Return CC BY-NC-SA, or Attribution-NonCommercial-ShareAlike, videos.  * &#x60;CC-BY-ND&#x60; - Return CC BY-ND, or Attribution-NoDerivs, videos.  * &#x60;CC-BY-SA&#x60; - Return CC BY-SA, or Attribution-ShareAlike, videos.  * &#x60;CC0&#x60; - Return CC0, or public domain, videos.  * &#x60;categories&#x60; - Filter by categories.  * &#x60;duration&#x60; - Filter by duration.  * &#x60;in-progress&#x60; - Return in-progress videos.  * &#x60;minimum_likes&#x60; - Filter by minimum likes.  * &#x60;trending&#x60; - Return trending videos.  * &#x60;upload_date&#x60; - Filter by upload date. 
          * @param {string} [links] A comma-separated list of video URLs to find. Querying, filtering, and sorting aren\&#39;t supported when using this field.
          * @param {number} [page] The page number of the results to show.
          * @param {number} [perPage] The number of items to show on each page of results, up to a maximum of 100.
+         * @param {string} [query] The search query.
          * @param {'alphabetical' | 'comments' | 'date' | 'duration' | 'likes' | 'plays' | 'relevant'} [sort] The way to sort the results.  Option descriptions:  * &#x60;alphabetical&#x60; - Sort the results alphabetically.  * &#x60;comments&#x60; - Sort the results by number of comments.  * &#x60;date&#x60; - Sort the results by date.  * &#x60;duration&#x60; - Sort the results by duration.  * &#x60;likes&#x60; - Sort the results by number of likes.  * &#x60;plays&#x60; - Sort the results by number of plays.  * &#x60;relevant&#x60; - Sort the results by relevance. 
          * @param {string} [uris] A comma-separated list of video URIs to find. Querying, filtering, and sorting aren\&#39;t supported when using this field.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videos_4: async (query: string, direction?: 'asc' | 'desc', filter?: 'CC' | 'CC-BY' | 'CC-BY-NC' | 'CC-BY-NC-ND' | 'CC-BY-NC-SA' | 'CC-BY-ND' | 'CC-BY-SA' | 'CC0' | 'categories' | 'duration' | 'in-progress' | 'minimum_likes' | 'trending' | 'upload_date', links?: string, page?: number, perPage?: number, sort?: 'alphabetical' | 'comments' | 'date' | 'duration' | 'likes' | 'plays' | 'relevant', uris?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'query' is not null or undefined
-            assertParamExists('videos_4', 'query', query)
+        videos_4: async (direction?: 'asc' | 'desc', filter?: 'CC' | 'CC-BY' | 'CC-BY-NC' | 'CC-BY-NC-ND' | 'CC-BY-NC-SA' | 'CC-BY-ND' | 'CC-BY-SA' | 'CC0' | 'categories' | 'duration' | 'in-progress' | 'minimum_likes' | 'trending' | 'upload_date', links?: string, page?: number, perPage?: number, query?: string, sort?: 'alphabetical' | 'comments' | 'date' | 'duration' | 'likes' | 'plays' | 'relevant', uris?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/videos`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1047,8 +1045,8 @@ export const VideosEssentialsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async videos_4(requestParameters: VideosEssentialsApiVideos1Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Video>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videos_4(requestParameters.query, requestParameters.direction, requestParameters.filter, requestParameters.links, requestParameters.page, requestParameters.perPage, requestParameters.sort, requestParameters.uris, options);
+        async videos_4(requestParameters: VideosEssentialsApiVideos1Request = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Video>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videos_4(requestParameters.direction, requestParameters.filter, requestParameters.links, requestParameters.page, requestParameters.perPage, requestParameters.query, requestParameters.sort, requestParameters.uris, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1178,7 +1176,7 @@ export const VideosEssentialsApiFactory = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videos_4(requestParameters: VideosEssentialsApiVideos1Request, options?: AxiosRequestConfig): AxiosPromise<Array<Video>> {
+        videos_4(requestParameters: VideosEssentialsApiVideos1Request = {}, options?: AxiosRequestConfig): AxiosPromise<Array<Video>> {
             return localVarFp.videos_4(requestParameters, options).then((request) => request(axios, basePath));
         },
     };
@@ -1676,13 +1674,6 @@ export type VideosEssentialsApiVideos0Request = {
 export type VideosEssentialsApiVideos1Request = {
     
     /**
-    * The search query.
-    * @type {string}
-    * @memberof VideosEssentialsApiVideos1
-    */
-    readonly query: string
-    
-    /**
     * The sort direction of the results.  Option descriptions:  * `asc` - Sort the results in ascending order.  * `desc` - Sort the results in descending order. 
     * @type {'asc' | 'desc'}
     * @memberof VideosEssentialsApiVideos1
@@ -1716,6 +1707,13 @@ export type VideosEssentialsApiVideos1Request = {
     * @memberof VideosEssentialsApiVideos1
     */
     readonly perPage?: number
+    
+    /**
+    * The search query.
+    * @type {string}
+    * @memberof VideosEssentialsApiVideos1
+    */
+    readonly query?: string
     
     /**
     * The way to sort the results.  Option descriptions:  * `alphabetical` - Sort the results alphabetically.  * `comments` - Sort the results by number of comments.  * `date` - Sort the results by date.  * `duration` - Sort the results by duration.  * `likes` - Sort the results by number of likes.  * `plays` - Sort the results by number of plays.  * `relevant` - Sort the results by relevance. 
@@ -1880,7 +1878,7 @@ export class VideosEssentialsApiGenerated extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VideosEssentialsApiGenerated
      */
-    public videos_4(requestParameters: VideosEssentialsApiVideos1Request, options?: AxiosRequestConfig) {
+    public videos_4(requestParameters: VideosEssentialsApiVideos1Request = {}, options?: AxiosRequestConfig) {
         return VideosEssentialsApiFp(this.configuration).videos_4(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }
